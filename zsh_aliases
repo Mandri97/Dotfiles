@@ -1,0 +1,21 @@
+export QT_QPA_PLATFORMTHEME="qt5ct"
+alias vi=vim
+alias thecat="sh ~/Code/script/thecat.sh"
+alias invader="sh ~/Code/script/ascii-invader-2.sh"
+alias scrot="scrot -cd 5 -e 'mv $f ~/screenfetch/'"
+alias ping="ping -c 5 www.google.com"
+alias you36="youtube-dl -f18"
+alias backup="sh ~/Code/script/backup.sh"
+alias brightness="sudo tee /sys/class/backlight/acpi_video0/brightness <<<"
+alias bac="sh ~/Code/script/bac.sh"
+alias 1x="cd ~/Code/python/MIT/6.001.x/"
+alias 2x="cd ~/Code/python/MIT/6.002.x/"
+alias rm="rm -rf"
+alias note="sh ~/Code/script/note.sh"
+alias resdown="wget -c http://blancopeck.net/Statistics.pdf"
+alias neo="~/Downloads/neofetch-master/./neofetch"
+alias todo="vi ~/Note/To_do.md"
+alias colorscheme="~/Code/script/./colorscheme"
+alias timer="sh ~/Code/script/timer"
+#Eventual error
+alias clera=clear

@@ -1,0 +1,110 @@
+! Urxvt Config
+! URxvt.font:             	xft:SourceCodePro-Light:size=7.3:antialias=true,xft:Inconsolata\ for\ Powerline:size=8, xft:PowerlineSymbols
+ URxvt.font:             	xft:Consolas:size=7.3:antialias=true,xft:Inconsolata\ for\ Powerline:size=10, xft:PowerlineSymbols
+URxvt.termName:         	rxvt-unicode-256color
+URxvt.matcher.button:   	1
+URxvt.transparent:    		false
+URxvt.allow_bold:    		true
+Xft.dpi:                	96
+Xft.antialias:          	true
+Xft.hinting:            	full
+URxvt.iso14755: 		false
+URxvt.iso14755_52: 		false
+URxvt.fading:        		0
+URxvt.tintColor:     		#ffffff
+URxvt.shading:        		0
+URxvt.inheritPixmap:    	False
+! Srollbar (true/false)
+URxvt*scrollBar:			false
+! If Scrollbar is true, uncomment the script bellow
+! URxvt*scrollBar.width:			8
+
+
+!-------------
+! Xterm config
+!-------------
+XTerm.termName: 			xterm-256color
+! Force xterm to follow locale setting
+XTerm.vt100.locale:			true
+! Using CLIPBOARD to Copy-Paste (Ctrl+c, Ctrl+v)
+XTerm.vt100.selectToClipboard:	true
+! Enabling UTF-8
+*VT100*font:				fixed
+! The script above could be interpreted as
+! *VT100.font:				fixed
+! *VT100.utf8Fonts.font:	fixed
+! Xterm font
+XTerm*faceName:				Droid Sans Mono for Powerline
+! Xterm font size
+XTerm*faceSize:				7.3
+! Font for powerline
+! Srollbar (true/false)
+XTerm.vt100.scrollBar:		false
+! If Scrollbar is true, uncomment the script bellow
+!XTerm.vt100.scrollBar.width:8
+
+! General config
+! --------------
+! Lines saved
+*saveLines:					4096
+! Srollbar (true/false)
+*scrollBar:					false
+! If Scrollbar is true, uncomment the script bellow
+!*scrollBar.width:		8
+! Terminal Geometry
+*geometry: 					90x22
+
+!Colored man pages
+URxvt.colorIT:  #9f8fbc
+URxvt.colorBD:  #9bc4bd
+URxvt.colorUL:  #b7ce42
+
+! Toogle fullsreen
+URxvt.perl-ext-common: fullscreen
+URxvt.keysym.F11: perl:fullscreen:switch
+
+! Colors
+! ------
+
+! special
+! ┏━┓┳  ┏━┓┳ ┓┳━┓┓ ┳
+! ┃  ┃  ┃ ┃┃ ┃┃ ┃┗┏┛
+! ┗━┛┇━┛┛━┛┇━┛┇━┛ ┇
+! by tudurom.
+
+! special
+*.foreground:   #c0c5ce
+*.background:   #273941
+*.cursorColor:  #c0c5ce
+
+! black
+*.color0:       #273941
+*.color8:       #456472
+
+! red
+*.color1:       #a66363
+*.color9:       #c27171
+
+! green
+*.color2:       #63a690
+*.color10:      #6dc2a3
+
+! yellow
+*.color3:       #a6a663
+*.color11:      #bfc271
+
+! blue
+*.color4:       #6385a6
+*.color12:      #719bc2
+
+! orange
+*.color5:       #BF9C86
+*.color13:      #BF9C86
+
+! cyan
+*.color6:       #63a69b
+*.color14:      #71c2af
+
+! white
+*.color7:       #c0c5ce
+*.color15:      #eff1f5

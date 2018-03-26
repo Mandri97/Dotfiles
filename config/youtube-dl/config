@@ -1,0 +1,6 @@
+# Default configuration for youtube-dl.
+
+--prefer-free-formats
+
+# Save all videos in ~/Videos
+-o %(title)s.%(ext)s
