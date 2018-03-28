@@ -13,18 +13,18 @@ Main(){
 
 python(){
     tmux new-session -s $SESS -n Code -d
-    tmux send-keys -t $SESS 'cd $HOME/Code/python/Data_Analysis' C-m
+    tmux send-keys -t $SESS 'cd $HOME/Code/python' C-m
     tmux split-window -h -t $SESS
-    tmux send-keys -t $SESS 'cd $HOME/Code/python/Data_Analysis' C-m
+    tmux send-keys -t $SESS 'cd $HOME/Code/python' C-m
     tmux send-keys -t $SESS:1.1 'vim .' C-m
     tmux send-keys -t $SESS "ipython" C-m
 }
 
 cpp(){
     tmux new-session -s $SESS -n Code -d
-    tmux send-keys -t $SESS 'cd $HOME/Code/C++/Practical' C-m
+    tmux send-keys -t $SESS 'cd $HOME/Code/C++' C-m
     tmux split-window -h -t $SESS
-    tmux send-keys -t $SESS 'cd $HOME/Code/C++/Practical' C-m
+    tmux send-keys -t $SESS 'cd $HOME/Code/C++' C-m
     tmux send-keys -t $SESS:1.1 'vim .' C-m
 }
 
