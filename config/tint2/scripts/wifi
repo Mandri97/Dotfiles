@@ -1,0 +1,39 @@
+#!/usr/bin/sh
+
+ICON_PATH="$HOME/Icons/"
+ICON_PREFIX="wireless"
+ICON_EXT=".svg"
+
+WIFI_NAME="wireless"
+
+function get_wifi_status {
+    WIFI_STAT=$(nmcli device | grep wlp3s0 | awk '{print $3}')
+}
+
+function get_wifi_pct {
+    WIFI_PCT=$(nmcli -f SIGNAL device wifi | grep -v 'SIGNAL' | head -1)
+}
+
+function get_wifi_icon {
+    ICON_NAME="-none"
+
+    get_wifi_status
+    get_wifi_pct
+
+    if [ $WIFI_STAT = "connected" ]; then
+	if [ "$WIFI_PCT" -lt 31 ]; then
+	    ICON_NAME="-weak"
+	elif [ "$WIFI_PCT" -lt 61 ]; then
+	    ICON_NAME="-medium"
+	elif [ "$WIFI_PCT" -lt 76 ]; then
+	    ICON_NAME="-good"
+	else
+	    ICON_NAME="-excelent"
+	fi
+    fi
+
+    WIFI_ICON=${ICON_PATH}${ICON_PREFIX}${ICON_NAME}${ICON_EXT}
+}
+
+get_wifi_icon
+echo "$WIFI_ICON"

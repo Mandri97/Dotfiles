@@ -1,0 +1,28 @@
+#!/usr/bin/sh
+
+ICON_PATH="$HOME/Icons/"
+ICON_PREFIX="volume"
+ICON_EXT=".svg"
+
+function get_volume {
+    VOLUME=$(amixer get Master | grep 'Front\ Left\:' | awk '{print $5}' | cut -f1 -d'%' | cut -f 2 -d '[')
+}
+
+function get_icon_name {
+    get_volume 
+
+    if [ "$VOLUME" -eq 0 ]; then
+	ICON_NAME="-muted"
+    elif [ "$VOLUME" -lt 31 ]; then
+	ICON_NAME="-low"
+    elif [ "$VOLUME" -lt 65 ]; then
+	ICON_NAME="-medium"
+    else
+	ICON_NAME="-high"
+    fi
+
+    VOL_ICON=${ICON_PATH}${ICON_PREFIX}${ICON_NAME}${ICON_EXT}
+}
+
+get_icon_name
+echo "${VOL_ICON}"

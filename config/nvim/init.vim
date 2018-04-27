@@ -2,46 +2,49 @@ set nocompatible
 
 " Vundle
 " set the runtime path to include Vundle and initialize
-  set rtp+=~/.vim/bundle/Vundle.vim
-  set runtimepath+=~/.vim
-
-" Load plugin
-call vundle#begin()
-  Plugin 'VundleVim/Vundle.vim'
-  Plugin 'vim-airline/vim-airline'
-  Plugin 'vim-airline/vim-airline-themes'
-  Plugin 'Latex-Box-Team/Latex-Box'
-  Plugin 'Valloric/YouCompleteMe'
-  Plugin 'jiangmiao/auto-pairs'
-  Plugin 'christoomey/vim-tmux-navigator'
-  Plugin 'vimwiki/vimwiki'
-  Plugin 'chriskempson/base16-vim'
-call vundle#end()
+  set runtimepath+=~/.config/nvim/bundle/neobundle.vim " Load plugin
+call neobundle#begin(expand('~/.config/nvim/bundle/'))
+  NeoBundle 'jiangmiao/auto-pairs'
+  NeoBundle 'Shougo/deoplete.nvim'
+  NeoBundle 'scrooloose/nerdtree'
+  NeoBundle 'tpope/vim-markdown'
+  NeoBundle 'vim-scripts/SyntaxComplete'
+  NeoBundle 'vimwiki/vimwiki'
+  NeoBundle 'vim-airline/vim-airline'
+  NeoBundle 'vim-airline/vim-airline-themes'
+  NeoBundle 'christoomey/vim-tmux-navigator'
+  NeoBundle 'mhartington/oceanic-next'
+  NeoBundle 'junegunn/fzf'
+call neobundle#end()
 
 " Airline
 " Airline configuration
-  let g:airline#extensions#tabline#enabled = 0
+  let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#left_sep = ''
   let g:airline#extensions#tabline#left_alt_sep = ''
   let g:airline#extensions#tabline#right_sep = ''
   let g:airline#extensions#tabline#right_alt_sep = ''
-  let g:airline_theme = 'ubaryd'
-
-" Powerline
-" Enable powerline in airline
+  let g:airline#extensions#tabline#left_setp = ' '
+  let g:airline#extensions#tabline#let_alt_set = '|'
+  let g:airline#extensions#tabline#formatter = 'default'
+  let g:airline#extensions#default#layout = [
+    \ [ 'a', 'b', 'c' ],
+    \ [ 'x', 'y', 'z', 'error']
+    \ ]
+  let g:airline_theme = 'oceanicnext'
   let g:airline_powerline_fonts = 1
-  let g:Powerline_symbols = 'fancy'
-" Enable powerline
-  set rtp+=/usr/lib/python2.7/site-packages/powerline/bindings/vim/
-  set t_Co=256
-  set guifont=Inconsolata\ for\ Powerline:h17
-  set term=xterm-256color
+  
   set termencoding=utf-8
   set encoding=utf-8
   set laststatus=2
+  set t_Co=256
+  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 
  " NERDTree configuration
   nmap <silent> <F2> :NERDTreeToggle <CR>
+
+" Use deoplete
+  let g:deoplete#enable_at_startup = 1
 
 " Vim-instant-markdown configuration
   let g:instant_markdown_slow = 1
@@ -60,6 +63,15 @@ call vundle#end()
   nnoremap <silent>  <ctrl-l> :TmuxNavigateRight<cr>
   nnoremap <silent>  <ctrl-\> :TmuxNavigatePrevious<cr>
   let g:tmux_navigator_save_on_switch = 2
+
+ colorscheme pablo
+
+" Evaluating Python code, this also makes startup faster
+  let g:python_host_prog = '/usr/bin/python'
+  let g:python3_host_prog = '/usr/bin/python3'
+
+  " Disable python 2 support
+  let g:loaded_python_provider = 1
   
 " CtrlP configuration
  set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.rar
@@ -74,14 +86,11 @@ call vundle#end()
  set runtimepath^=~/.vim/bundle/ctrlp.vim
  let g:ctrlp_match_window_bottom = 0
 
-" VimCompleteMe
- let b:vcm_tab_complete = 'dict'
-
 " General settinngs
   filetype on
   filetype plugin on
   filetype plugin indent on
-  syntax on
+  syntax enable
   set relativenumber
 
 " Highlight and case insesitive search
@@ -89,6 +98,8 @@ call vundle#end()
   set ignorecase	
 
   "colorscheme base16-default-dark
+  set cursorline
+  highlight Cursorline cterm=NONE
 
   if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
   set fileencodings=ucs-bom,utf-8,latin1
@@ -137,20 +148,21 @@ call vundle#end()
   set bs=indent,eol,start	" allow backspacing over everything in insert mode
   set viminfo='20,\"50		" read/write a .viminfo file, don't store more
 				" than 50 lines of registers
-  set history=50		" keep 50 lines of command line history
+  set history=100		" keep 50 lines of command line history
   set ruler			" show the cursor position all the time
 
 " Fortran
   let fortran_free_source=1
   let fortran_have_tabs=1
 
-" Persistent vim folder
-  augroup AutoSaveFolds
-    autocmd!
-    autocmd BufWinLeave * mkview
-    autocmd BufWinEnter * silent loadview
-  augroup END
-
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
 let &guicursor = &guicursor . ",a:blinkon0"
+
+" Configuration of SyntaxComplete
+if has("autocmd") && exists("+omnifunc")
+    autocmd Filetype *
+	\ if &omnifunc == "" |
+	\	setlocal omnifunc=syntaxcomplete#Complete |
+        \  endif
+endif

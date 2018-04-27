@@ -1,21 +1,38 @@
 export QT_QPA_PLATFORMTHEME="qt5ct"
-alias vi=vim
-alias thecat="sh ~/Code/script/thecat.sh"
-alias invader="sh ~/Code/script/ascii-invader-2.sh"
-alias scrot="scrot -cd 5 -e 'mv $f ~/screenfetch/'"
+
+# Directory
+VIMWIKI_DIR="$HOME/vimwiki/"
+SCRIPT_DIR="$HOME/Code/script"
+
+# Root
+function root6.12.04(){
+    source ~/Packages/root-6.12.04/root/bin/thisroot.sh
+}
+
+# I switch to neovim
+alias vi=nvim
+
+# Linux information system
+alias thecat="sh $SCRIPT_DIR/thecat.sh"
+
+# Show colorscheme
+alias invader="sh $SCRIPT_DIR/ascii-invader-2.sh"
+
+# Change colorscheme
+alias colorscheme="sh $SCRIPT_DIR/colorscheme"
+
+# Utilities
 alias ping="ping -c 5 www.google.com"
-alias you36="youtube-dl -f18"
-alias backup="sh ~/Code/script/backup.sh"
+alias backup="sh $SCRIPT_DIR/backup.sh"
 alias brightness="sudo tee /sys/class/backlight/acpi_video0/brightness <<<"
-alias bac="sh ~/Code/script/bac.sh"
-alias 1x="cd ~/Code/python/MIT/6.001.x/"
-alias 2x="cd ~/Code/python/MIT/6.002.x/"
+alias todo="nvim $VIMWIKI_DIR/To-do.md"
+
+# Alias
 alias rm="rm -rf"
-alias note="sh ~/Code/script/note.sh"
-alias resdown="wget -c http://blancopeck.net/Statistics.pdf"
-alias neo="~/Downloads/neofetch-master/./neofetch"
-alias todo="vi ~/Note/To_do.md"
-alias colorscheme="~/Code/script/./colorscheme"
-alias timer="sh ~/Code/script/timer"
+alias cp="cp -rf"
+alias vimwiki="cd $VIMWIKI_DIR; nvim index.wiki"
+# Download video in 360p format
+alias you36="youtube-dl -f18"
+
 #Eventual error
 alias clera=clear
