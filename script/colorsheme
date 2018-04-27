@@ -1,0 +1,27 @@
+#!/bin/sh
+
+XRES=$HOME/Dotfiles/Xresources
+
+if [ $# -ne 1 ]; then
+    echo "Usage: ./colorscheme new_colorscheme"
+    exit
+fi
+
+function get_line_number {
+    LINE_NUMBER=$(grep -n "Colors" $XRES | cut -d ':' -f 1)
+}
+
+# Get line number
+get_line_number
+
+# delete the current colorscheme
+BEGIN=$(($LINE_NUMBER + 3))
+END=$(($BEGIN + 35))
+
+sed -i "$BEGIN,\$d" $XRES
+
+# Insert new colorscheme
+cat $1 >> $XRES
+
+# Update colorscheme
+xrdb $XRES
