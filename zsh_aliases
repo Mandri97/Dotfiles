@@ -1,16 +1,57 @@
 export QT_QPA_PLATFORMTHEME="qt5ct"
+export MKL_THREADING_LAYER="GNU"
+export PATH=~/.local/bin/:${PATH}
+
+export OMP_NUM_THREADS=2
+
+# Texlive
+export TEXMFHOME="/home/Edward/.texmf"
+
+# OpenCV
+export OPENCV_LIBDIR="/usr/lib64"
+export OPENCV_INCDIR="/usr/include/opencv2"
+
+#LARCV
+#export LARCV_INCDIR="$HOME/git/larcv2/build/include"
+#export LARCV_LIBDIR="$HOME/git/larcv2/build/lib"
+#export LARCV_BUILDDIR="$HOME/git/larcv2/build"
+#export LARCV_BASEDIR="$HOME/git/larcv2"
 
 # Directory
 VIMWIKI_DIR="$HOME/vimwiki/"
 SCRIPT_DIR="$HOME/Code/script"
 
-# Root
-function root6.12.04(){
-    source ~/Packages/root-6.12.04/root/bin/thisroot.sh
+# Root variables
+export ROOTSYS="$HOME/Packages/root"
+
+# LARCV2
+function larcv2(){
+    CURPATH=$(pwd)
+    cd $HOME/git/larcv2
+    source configure.sh 
+    cd $CURPATH
 }
 
-# I switch to neovim
-alias vi=nvim
+# GEANT4
+function geant4.10.04.p02(){
+    CURPATH=$(pwd)
+    cd /opt/geant4/bin; source geant4.sh
+    cd $CURPATH
+}
+
+# guinea
+alias guinea="$HOME/Packages/Exp/gp-1.4.4/./guinea"
+
+# LHE parser
+alias LHEextract="$HOME/Code/C++/lheParser/./parse"
+
+# Root
+function root6.12.06(){
+    source $ROOTSYS/bin/thisroot.sh
+}
+
+# Editor
+alias vi=vim
 
 # Linux information system
 alias thecat="sh $SCRIPT_DIR/thecat.sh"
@@ -25,14 +66,21 @@ alias colorscheme="sh $SCRIPT_DIR/colorscheme"
 alias ping="ping -c 5 www.google.com"
 alias backup="sh $SCRIPT_DIR/backup.sh"
 alias brightness="sudo tee /sys/class/backlight/acpi_video0/brightness <<<"
-alias todo="nvim $VIMWIKI_DIR/To-do.md"
+alias todo="vim $VIMWIKI_DIR/To-do.md"
 
 # Alias
 alias rm="rm -rf"
 alias cp="cp -rf"
-alias vimwiki="cd $VIMWIKI_DIR; nvim index.wiki"
+alias vimwiki="cd $VIMWIKI_DIR; vim index.wiki"
+alias python=/home/Edward/anaconda2/bin/./python
+alias ipython=/home/Edward/anaconda2/bin/./ipython
+alias conda=/home/Edward/anaconda2/bin/.conda
 # Download video in 360p format
 alias you36="youtube-dl -f18"
 
 #Eventual error
 alias clera=clear
+
+# Colorscheme
+BASE16_SHELL="/mnt/Data/Backup/Downloads/oceanic-next-shell-master/oceanic-next.dark.sh"
+    [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL

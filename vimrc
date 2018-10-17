@@ -2,40 +2,55 @@ set nocompatible
 
 " Vundle
 " set the runtime path to include Vundle and initialize
-  set rtp+=~/.vim/bundle/Vundle.vim
-  set runtimepath+=~/.vim
-
+  set rtp+=~/.vim/bundle/Vundle.vim 
 " Load plugin
 call vundle#begin()
   Plugin 'VundleVim/Vundle.vim'
   Plugin 'vim-airline/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'
-  Plugin 'Latex-Box-Team/Latex-Box'
   Plugin 'Valloric/YouCompleteMe'
   Plugin 'jiangmiao/auto-pairs'
   Plugin 'christoomey/vim-tmux-navigator'
   Plugin 'vimwiki/vimwiki'
   Plugin 'chriskempson/base16-vim'
+  Plugin 'mhartington/oceanic-next'
+  Plugin 'scrooloose/nerdtree'
 call vundle#end()
 
 " Airline
 " Airline configuration
-  let g:airline#extensions#tabline#enabled = 0
+  let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#left_sep = ''
   let g:airline#extensions#tabline#left_alt_sep = ''
   let g:airline#extensions#tabline#right_sep = ''
   let g:airline#extensions#tabline#right_alt_sep = ''
-  let g:airline_theme = 'ubaryd'
+  let g:airline#extensions#default#layout = [
+    \ [ 'a', 'b', 'c' ],
+    \ [ 'x', 'y', 'z', 'error' ]
+    \ ]
+  let g:airline_theme = 'oceanicnext'
+  let g:oceanic_next_terminal_bold = 1
+  let g:oceanic_next_terminal_italic = 1
+
+" guifont
+  set guifont=Source\ Code\ Pro\ for\ Powerline\ Medium\ 7.5
+  set guifont+=PowerlineSymbols\ 7
+  set guioptions=agimrLtT
 
 " Powerline
 " Enable powerline in airline
   let g:airline_powerline_fonts = 1
   let g:Powerline_symbols = 'fancy'
+
 " Enable powerline
-  set rtp+=/usr/lib/python2.7/site-packages/powerline/bindings/vim/
-  set t_Co=256
-  set guifont=Inconsolata\ for\ Powerline:h17
-  set term=xterm-256color
+  "set rtp+=/usr/lib/python2.7/site-packages/powerline/bindings/vim/
+  "set t_Co=256
+  "set term=xterm-256color
+  if(has("termguicolors"))
+      set termguicolors
+  endif
+  colorscheme OceanicNext
+
   set termencoding=utf-8
   set encoding=utf-8
   set laststatus=2
@@ -84,11 +99,13 @@ call vundle#end()
   syntax on
   set relativenumber
 
+" Enable italic
+  let &t_ZH="\e[3m"
+  let &t_ZR="\e[23m"
+
 " Highlight and case insesitive search
   set hlsearch			
   set ignorecase	
-
-  "colorscheme base16-default-dark
 
   if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
   set fileencodings=ucs-bom,utf-8,latin1
@@ -117,10 +134,6 @@ call vundle#end()
   set shiftwidth=4
   set noexpandtab
  
-" Enable italic
-  let &t_ZH="\e[3m"
-  let &t_ZR="\e[23m"
-
 " Backup files
   set nobackup
   set nowb
@@ -147,10 +160,12 @@ call vundle#end()
 " Persistent vim folder
   augroup AutoSaveFolds
     autocmd!
-    autocmd BufWinLeave * mkview
-    autocmd BufWinEnter * silent loadview
+    autocmd BufWinLeave *.* mkview
+    autocmd BufWinEnter *.* silent loadview
   augroup END
 
-" Don't wake up system with blinking cursor:
-" http://www.linuxpowertop.org/known.php
-let &guicursor = &guicursor . ",a:blinkon0"
+  " Cursor
+  set guicursor=n-v-c:block-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175,a:blinkon0
+  let &guicursor = &guicursor . ",a:blinkon0"
+  set cursorline
+  highlight Cursorline cterm=NONE

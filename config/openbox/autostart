@@ -24,4 +24,11 @@ tint2 &
 
 mpd &
 $HOME/Git/dunst/./dunst &
-compton &
+compton -C &
+sh ~/.xsession
+skippy-xd &
+
+# Start conky
+# conky -c ~/.conky/Atelas_Conky/Atelas
+
+#gconftool-2 --set /apps/gnome_settings_daemon/plugins/background/active --type bool False

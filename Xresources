@@ -66,39 +66,30 @@ URxvt.keysym.F11: perl:fullscreen:switch
 ! Colors
 ! ------
 
-! special
-*.foreground:   #b2ac95
-*.background:   #161a20
-*.cursorColor:  #b2ac95
+*foreground:    #ddeedd
+*background:    #131D24
 
-! black
-*.color0:       #273941
-*.color8:       #456472
-
-! red
-*.color1:       #a96156
-*.color9:       #a96156
-
-! green
-*.color2:       #b98e6b
-*.color10:      #b98e6b
-
-! yellow
-*.color3:       #395e7f
-*.color11:      #395e7f
-
-! blue
-*.color4:       #3f6984
-*.color12:      #3f6984
-
-! orange
-*.color5:       #4e7384
-*.color13:      #4e7384
-
-! cyan
-*.color6:       #748782
-*.color14:      #748782
-
-! white
-*.color7:       #b2ac95
-*.color15:      #b2ac95
+!black
+*color0:    #25374A
+*color8:    #3A526B
+!red
+*color1:    #BD4A4A
+*color9:    #CC6666
+!green
+*color2:    #B7CE42
+*color10:   #BDE077
+!yellow
+*color3:    #FEA63C
+*color11:   #FFE863
+!blue
+*color4:    #66AABB
+*color12:   #AACCBB
+!magenta
+*color5:    #F26B9E
+*color13:   #ff5879
+!cyan
+*color6:    #72AD8C
+*color14:   #9FE3BC
+!white
+*color7:    #DDEEDD
+*color15:   #FFFFFF
